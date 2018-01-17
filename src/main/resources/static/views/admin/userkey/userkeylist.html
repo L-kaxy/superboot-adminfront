@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div class="row">
+		<div class="col-xs-12 col-md-12">
+			<div class="widget">
+				<div class="widget-header ">
+					<span class="widget-caption">用户授权列表</span>
+				</div>
+				<div class="widget-body">
+					<div class="dataTables_wrapper form-inline">
+						<div class="dataTables_filter">
+							<label><input type="search" ng-model="searchKeyword"
+								ng-keypress="searchField($event)" class="form-control input-sm"></label>
+						</div>
+						<div class="dataTables_length">
+							每页显示<label><select class="form-control input-sm"
+								ng-change="selectSize(newSize)" ng-model="newSize"><option
+										ng-repeat="item in sizes" value="{{item.value}}">{{item.name}}条</option></select></label>
+						</div>
+						<table class="table table-striped table-hover table-bordered">
+							<thead>
+								<tr role="row">
+									<th class="sorting_disabled" rowspan="1" colspan="1"
+										style="width: 48px;"></th>
+									<th class="sorting" rowspan="1" colspan="1"
+										ng-click="selectSort($event, 'loginmsg')"
+										style="width: 384px;">登录名</th>
+									<th class="sorting" rowspan="1" colspan="1"
+										ng-click="selectSort($event, 'createtime')"
+										style="width: 263px;">创建时间</th>
+									<th class="sorting_disabled" rowspan="1" colspan="1"
+										style="width: 293px;">操作</th>
+								</tr>
+							</thead>
+							<tbody ng-repeat="userkey in userkeys">
+								<tr>
+									<td class="sorting_1"><i
+										class="fa fa-plus-square-o row-details"
+										ng-click="detailToggler($event)"></i></td>
+									<td>{{userkey.loginmsg}}</td>
+									<td>{{userkey.createtime}}</td>
+									<td><a style="cursor: pointer" ng-click="preUserkeyRole(userkey.userid, userkey.loginmsg)"
+										class="btn btn-default btn-xs"><i class="glyphicon glyphicon-transfer"></i>分配</a></td>
+								</tr>
+								<tr style="display: none">
+									<td class="details" colspan="4"><div
+											class="well with-header">
+											<div class="header bordered-blue">所属角色</div>
+											<div class="labels-container">
+												<span ng-repeat="role in userkey.roleList"
+													class="label label-success">{{role.authitemname}}</span>
+											</div>
+										</div></td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th rowspan="1" colspan="1"></th>
+									<th rowspan="1" colspan="1"><input type="text"
+										placeholder="搜索登录名" ng-model="searchUserkey.loginmsg"
+										ng-keypress="searchField($event)"
+										class="form-control input-sm"></th>
+									<th rowspan="1" colspan="1"></th>
+									<th rowspan="1" colspan="1"></th>
+								</tr>
+							</tfoot>
+						</table>
+						<div class="row DTTTFooter">
+							<div class="col-sm-6">
+								<div class="dataTables_info">共{{page.totalCount}}条记录</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="dataTables_paginate paging_bootstrap">
+									<ul class="pagination">
+										<li ng-if="page.indexPageNum == 1" class="prev disabled"><a>上一页</a></li>
+										<li ng-if="page.indexPageNum != 1" class="prev"
+											ng-click="selectPage(page.indexPageNum - 1)"
+											style="cursor: pointer"><a>上一页</a></li>
+										<li ng-repeat="pageindex in pages"
+											class="{{pageindex.active}}"
+											ng-click="selectPage(pageindex.name)"><a
+											style="cursor: pointer">{{pageindex.name}}</a></li>
+										<li ng-if="page.indexPageNum == pages.length"
+											class="next disabled"><a>下一页</a></li>
+										<li ng-if="page.indexPageNum != pages.length" class="next"
+											ng-click="selectPage(page.indexPageNum + 1)"
+											style="cursor: pointer"><a>下一页</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

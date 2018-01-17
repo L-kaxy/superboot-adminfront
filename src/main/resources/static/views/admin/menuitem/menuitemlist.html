@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div class="row">
+		<div class="col-xs-12 col-md-12">
+			<div class="widget">
+				<div class="widget-header ">
+					<span class="widget-caption">{{menuname}}菜单的菜单项列表</span>
+				</div>
+				<div class="widget-body">
+					<div class="table-toolbar">
+						<a ng-click="goBack()" class="btn btn-default"
+							style="cursor: pointer">返回</a> <a ng-click="preAddMenuItem()"
+							class="btn btn-default" style="cursor: pointer">添加菜单项</a>
+					</div>
+					<div class="row">
+						<div class="col-lg-12 col-sm-12 col-xs-12">
+							<div class="well">
+								<div class="dd dd-draghandle bordered">
+									<ol class="dd-list">
+										<li class="dd-item dd2-item" data-id="{{menuitem.menuitemid}}"
+											ng-repeat="menuitem in menuitems | filter:{menuitemparentid:'0'}:compareParent | orderBy:'menuitemorder' ">
+											<div class="dd-handle dd2-handle">
+												<i class="normal-icon {{menuitem.menuitemicon}}"></i> <i
+													class="drag-icon fa fa-arrows-alt "></i>
+											</div>
+											<div class="dd2-content row">
+												<div class="pull-left">{{menuitem.menuitemname}}</div>
+												<div class="pull-right">
+													<a style="cursor: pointer"
+														ng-click="preEditMenuItem(menuitem.menuitemid)"
+														class="btn btn-info btn-xs"><i
+														class="glyphicon glyphicon-pencil"></i>编辑</a> <a
+														ng-click="deleteMenuItem(menuitem)"
+														style="cursor: pointer" class="btn btn-danger btn-xs"><i
+														class="fa fa-trash-o"></i>删除</a>
+												</div>
+											</div>
+											<ol class="dd-list" ng-if="isParemt(menuitem, menuitems)">
+												<li class="dd-item dd2-item" data-id="{{child.menuitemid}}"
+													ng-repeat="child in menuitems | filter:{menuitemparentid:menuitem.menuitemid}:compareParent | orderBy:'menuitemorder' ">
+													<div class="dd-handle dd2-handle">
+														<i class="normal-icon {{child.menuitemicon}} "></i> <i
+															class="drag-icon fa fa-arrows-alt "></i>
+													</div>
+													<div class="dd2-content row">
+														<div class="pull-left">{{child.menuitemname}}</div>
+														<div class="pull-right">
+															<a style="cursor: pointer"
+																ng-click="preEditMenuItem(child.menuitemid)"
+																class="btn btn-info btn-xs"><i
+																class="glyphicon glyphicon-pencil"></i>编辑</a> <a
+																ng-click="deleteMenuItem(child)" style="cursor: pointer"
+																class="btn btn-danger btn-xs"><i
+																class="fa fa-trash-o"></i>删除</a>
+														</div>
+													</div>
+													<ol class="dd-list" ng-if="isParemt(child, menuitems)">
+														<li class="dd-item dd2-item"
+															data-id="{{grandson.menuitemid}}"
+															ng-repeat="grandson in menuitems | filter:{menuitemparentid:child.menuitemid}:compareParent | orderBy:'menuitemorder' ">
+															<div class="dd-handle dd2-handle">
+																<i class="normal-icon {{grandson.menuitemicon}} "></i> <i
+																	class="drag-icon fa fa-arrows-alt "></i>
+															</div>
+															<div class="dd2-content row">
+																<div class="pull-left">{{grandson.menuitemname}}</div>
+																<div class="pull-right">
+																	<a style="cursor: pointer"
+																		ng-click="preEditMenuItem(grandson.menuitemid)"
+																		class="btn btn-info btn-xs"><i
+																		class="glyphicon glyphicon-pencil"></i>编辑</a> <a
+																		ng-click="deleteMenuItem(grandson)"
+																		style="cursor: pointer" class="btn btn-danger btn-xs"><i
+																		class="fa fa-trash-o"></i>删除</a>
+																</div>
+															</div>
+														</li>
+													</ol>
+												</li>
+											</ol>
+										</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		jQuery(function($) {
+			$('.dd').nestable({
+				maxDepth : 3
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div class="row">
+		<div class="col-xs-12 col-md-12">
+			<div class="widget">
+				<div class="widget-header ">
+					<span class="widget-caption">编辑菜单项</span>
+				</div>
+				<div class="widget-body" id="editMenuItemForm">
+					<div class="table-toolbar">
+						<a ng-click="goBack()" class="btn btn-default"
+							style="cursor: pointer">返回</a> <a class="btn btn-success"
+							ng-click="saveMenuItem()" style="cursor: pointer">确认</a>
+					</div>
+					<div>
+						<form>
+							<div class="row">
+								<div class="form-group col-xs-4">
+									<label>菜单名</label> <input type="text" class="form-control"
+										disabled="true" ng-model="menuname" name="menuname">
+								</div>
+								<div class="form-group col-xs-4">
+									<label>菜单项名</label> <input type="text" class="form-control"
+										ng-model="theMenuItem.menuitemname" name="menuitemname"
+										placeholder="请输入菜单项名" data-bv-notempty="true"
+										data-bv-notempty-message="菜单项名不能为空">
+								</div>
+								<div class="form-group col-xs-4">
+									<label>菜单项父节点</label><select name="menuitemparentid"
+										class="form-control input-sm"
+										ng-model="theMenuItem.menuitemparentid"><option
+											ng-repeat="item in menuitems" value="{{item.menuitemid}}">{{item.menuitemname}}</option></select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-xs-1">
+									<label>是否显示</label>
+								</div>
+								<div class="col-xs-1">
+									<label> <input ng-model="theMenuItem.isshow"
+										class="checkbox-slider slider-icon colored-blue yesno"
+										type="checkbox"> <span class="text"></span>
+									</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-xs-4">
+									<label>菜单项页面</label> <input type="text" class="form-control"
+										ng-model="theMenuItem.menuitemurl" name="menuitemurl"
+										placeholder="请输入菜单项页面">
+								</div>
+								<div class="form-group col-xs-4">
+									<label>菜单项路由</label> <input type="text" class="form-control"
+										ng-model="theMenuItem.menuitemrouteurl"
+										name="menuitemrouteurl" placeholder="请输入菜单项路由">
+								</div>
+								<div class="form-group col-xs-4">
+									<label>菜单项控制器</label> <input type="text" class="form-control"
+										ng-model="theMenuItem.menuitemctrl" name="menuitemctrl"
+										placeholder="请输入菜单项控制器">
+								</div>
+							</div>
+							<div class="form-group">
+								<label>菜单项图标</label> <input type="text" class="form-control"
+									ng-model="theMenuItem.menuitemicon" name="menuitemicon"
+									placeholder="请选择菜单项图标" data-bv-notempty="true" disabled="true"
+									data-bv-notempty-message="菜单项图标不能为空">
+								<div class="buttons-preview" style="margin-top: 5px">
+									<a ng-repeat="icon in icons" ng-click="searchIcon(icon.name)"
+										class="btn btn-default btn-xs icon-only" title="{{icon.name}}"><i
+										class="{{icon.name}}"></i></a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function() {
+			// 初始化检查器
+			$("#editMenuItemForm").bootstrapValidator();
+		});
+	</script>
+</body>
+</html>

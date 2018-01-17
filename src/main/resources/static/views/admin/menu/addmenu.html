@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div class="row">
+		<div class="col-xs-12 col-md-12">
+			<div class="widget">
+				<div class="widget-header ">
+					<span class="widget-caption">添加菜单</span>
+				</div>
+				<div class="widget-body" id="addMenuForm">
+					<div class="table-toolbar">
+						<a ng-click="goBack()" class="btn btn-default"
+							style="cursor: pointer">返回</a> <a class="btn btn-success"
+							ng-click="saveMenu()" style="cursor: pointer">确认</a>
+					</div>
+					<div>
+						<form>
+							<div class="form-group">
+								<label>菜单名</label> <input type="text" class="form-control"
+									ng-model="theMenu.menuname" name="menuname"
+									placeholder="请输入菜单名" data-bv-notempty="true"
+									data-bv-notempty-message="菜单名不能为空">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function() {
+			// 初始化检查器
+			$("#addMenuForm").bootstrapValidator();
+		});
+	</script>
+</body>
+</html>

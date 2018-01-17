@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div class="row">
+		<div class="col-xs-12 col-md-12">
+			<div class="widget">
+				<div class="widget-header ">
+					<span class="widget-caption">编辑{{permissionname}}行为</span>
+				</div>
+				<div class="widget-body" id="editPermissionForm">
+					<div class="table-toolbar">
+						<a ng-click="goBack()" class="btn btn-default"
+							style="cursor: pointer">返回</a> <a class="btn btn-success"
+							ng-click="savePermission()" style="cursor: pointer">确认</a>
+					</div>
+					<div>
+						<form>
+							<div class="form-group">
+								<label>行为名</label> <input type="text" class="form-control"
+									ng-model="thePermission.authitemname" name="rolename"
+									placeholder="请输入行为名" data-bv-notempty="true"
+									data-bv-notempty-message="行为名不能为空">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function() {
+			// 初始化检查器
+			$("#editPermissionForm").bootstrapValidator();
+		});
+	</script>
+</body>
+</html>
