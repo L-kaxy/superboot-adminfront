@@ -68,7 +68,7 @@ controllers
 						}
 						
 						$scope.page.order = $scope.order;
-						$scope.page.sortFieldNme = $scope.sortElement;
+						$scope.page.sortFieldNames = [$scope.sortElement];
 						tempSearchAuth.isdelete = false;
 						var data = {
 							"pageinfo":$scope.page,
