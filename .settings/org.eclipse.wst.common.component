@@ -4,13 +4,13 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <dependent-module archiveName="superboot-menus-1.1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/superboot-menus/superboot-menus">
+        <dependent-module archiveName="superboot-menus-1.2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/superboot-menus/superboot-menus">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="superboot-security-1.1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/superboot-security/superboot-security">
+        <dependent-module archiveName="superboot-security-1.2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/superboot-security/superboot-security">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="superboot-core-1.1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/superboot-core/superboot-core">
+        <dependent-module archiveName="superboot-core-1.2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/superboot-core/superboot-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/superboot-adminfront/target/classes"/>
